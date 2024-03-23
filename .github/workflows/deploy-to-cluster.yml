@@ -35,7 +35,8 @@ jobs:
         env:
           KUBECONFIG: /tmp/config
         run: |
-          helm install \
+          helm upgrade \
+          --install \
           --namespace ${{ vars.K8S_NAMESPACE }} \
           dvalin-${{ github.event.inputs.helm_chart }} \
           ./${{ github.event.inputs.helm_chart }}
