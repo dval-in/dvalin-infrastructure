@@ -37,7 +37,7 @@ jobs:
         run: |
           helm install \
           --namespace "dvalin" \
-          dvalin-${{ github.event.inputs.helm_chart }}
+          dvalin-${{ github.event.inputs.helm_chart }} \
           ./${{ github.event.inputs.helm_chart }}
 
       - name: Remove kubeconfig info
