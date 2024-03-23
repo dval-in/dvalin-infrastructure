@@ -1,0 +1,9 @@
+global:
+  postgresql:
+    auth:
+      username: "dvalin"
+      database: "dvalin-backend"
+      existingSecret: "dvalin-backend-postgres-secret"
+
+postgresql:
+  fullnameOverride: "dvalin-backend-postgres"

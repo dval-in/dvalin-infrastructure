@@ -1,0 +1,44 @@
+name: Deploy to cluster
+
+on:
+  workflow_dispatch: # deploy on demand
+    inputs:
+      helm_chart:
+        description: "Which Helm-Chart should be deployed?"
+        type: choice
+        required: true
+        options:
+          - "backend"
+        default: "backend"
+      environment_name:
+        description: "Which environment to deploy to?"
+        type: choice
+        required: true
+        options:
+          - "maalni-cluster"
+        default: "maalni-cluster"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment_name }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Write out the kubeconfig info
+        run: |
+          echo ${{ secrets.DEPLOY_ACCOUNT }} | base64 -d > /tmp/config
+
+      - name: Update deployment
+        env:
+          KUBECONFIG: /tmp/config
+        run: |
+          helm install \
+          --namespace "dvalin" \
+          dvalin-${{ github.event.inputs.helm_chart }}
+          ./${{ github.event.inputs.helm_chart }}
+
+      - name: Remove kubeconfig info
+        run: rm -f /tmp/config

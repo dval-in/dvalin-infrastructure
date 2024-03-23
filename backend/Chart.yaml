@@ -1,0 +1,7 @@
+apiVersion: v2
+name: dvalin-backend
+version: 0.0.1
+dependencies:
+  - name: postgresql
+    version: 15.1.2
+    repository: "@bitnami"
