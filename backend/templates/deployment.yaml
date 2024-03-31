@@ -17,6 +17,8 @@ spec:
       containers:
         - name: {{ .Release.Name }}
           image: ghcr.io/dval-in/dvalin-backend:main
-          envFrom: "dvalin-backend-env"
+          envFrom:
+          - secretRef:
+              name: "dvalin-backend-env"
           ports:
             - containerPort: 3000
