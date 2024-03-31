@@ -15,3 +15,4 @@ redis:
       type: "NodePort"
   auth:
     existingSecret: "dvalin-backend-redis-secret"
+    existingSecretPasswordKey: "redis-password"
