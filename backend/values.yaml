@@ -10,3 +10,6 @@ postgresql:
 
 redis:
   fullnameOverride: "dvalin-backend-redis"
+  master:
+    service:
+      type: "NodePort"
