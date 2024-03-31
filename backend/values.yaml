@@ -7,6 +7,9 @@ global:
 
 postgresql:
   fullnameOverride: "dvalin-backend-postgres"
+  primary:
+    service:
+      type: "NodePort"
 
 redis:
   fullnameOverride: "dvalin-backend-redis"
