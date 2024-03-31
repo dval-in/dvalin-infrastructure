@@ -13,3 +13,4 @@ redis:
   master:
     service:
       type: "NodePort"
+  existingSecret: "dvalin-backend-redis-secret"
