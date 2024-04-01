@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+          image: ghcr.io/dval-in/dvalin-backend:main
+          imagePullPolicy: Always
+          envFrom:
+          - secretRef:
+              name: "dvalin-backend-env"
+          ports:
+            - name: backend-port
+              containerPort: 3000
+              protocol: TCP

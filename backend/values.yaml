@@ -1,9 +1,18 @@
-global:
-  postgresql:
-    auth:
-      username: "dvalin"
-      database: "dvalin-backend"
-      existingSecret: "dvalin-backend-postgres-secret"
-
 postgresql:
   fullnameOverride: "dvalin-backend-postgres"
+  primary:
+    service:
+      type: "NodePort"
+  auth:
+    username: "dvalin"
+    database: "dvalin-backend"
+    existingSecret: "dvalin-backend-postgres-secret"
+
+redis:
+  fullnameOverride: "dvalin-backend-redis"
+  master:
+    service:
+      type: "NodePort"
+  auth:
+    existingSecret: "dvalin-backend-redis-secret"
+    existingSecretPasswordKey: "redis-password"
