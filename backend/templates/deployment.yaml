@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}
-          image: ghcr.io/dval-in/dvalin-backend:fix-bull
+          image: ghcr.io/dval-in/dvalin-backend:main
+          imagePullPolicy: Always
           envFrom:
           - secretRef:
               name: "dvalin-backend-env"
