@@ -8,10 +8,10 @@ spec:
   selector:
     app.kubernetes.io/name: {{ .Release.Name }}
   ports:
-    - name: {{ .Release.Name }}-port
+    - name: backend-port
       protocol: TCP
       port: 3000
-      targetPort: {{ .Release.Name }}-port
+      targetPort: backend-port
   type: ClusterIP
   sessionAffinity: None
   ipFamilies:

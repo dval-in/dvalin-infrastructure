@@ -21,6 +21,6 @@ spec:
           - secretRef:
               name: "dvalin-backend-env"
           ports:
-            - name: {{ .Release.Name }}-port
+            - name: backend-port
               containerPort: 3000
               protocol: TCP
