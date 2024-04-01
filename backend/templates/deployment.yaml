@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}
   labels:
-    app: {{ .Release.Name }}
+    app.kubernetes.io/name: {{ .Release.Name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app.kubernetes.io/name: {{ .Release.Name }}
   template:
     metadata:
       labels:
-          app: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ .Release.Name }}
     spec:
       containers:
         - name: {{ .Release.Name }}
@@ -21,4 +21,6 @@ spec:
           - secretRef:
               name: "dvalin-backend-env"
           ports:
-            - containerPort: 3000
+            - name: {{ .Release.Name }}-port
+              containerPort: 3000
+              protocol: TCP
