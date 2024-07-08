@@ -10,18 +10,26 @@ on:
         options:
           - "backend"
         default: "backend"
-      environment_name:
-        description: "Which environment to deploy to?"
+      server_name:
+        description: "Which server to deploy to?"
         type: choice
         required: true
         options:
-          - "maalni-cluster"
-        default: "maalni-cluster"
+          - "maalni"
+        default: "maalni"
+      environment_name:
+        description: "Which server to deploy to?"
+        type: choice
+        required: true
+        options:
+          - "production"
+          - "staging"
+        default: "staging"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.environment_name }}
+    environment: ${{ github.event.inputs.server_name }}-${{ github.event.inputs.environment_name }}
 
     steps:
       - name: Checkout
