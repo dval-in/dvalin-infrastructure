@@ -18,7 +18,7 @@ on:
           - "maalni"
         default: "maalni"
       environment_name:
-        description: "Which server to deploy to?"
+        description: "Which environment to deploy to?"
         type: choice
         required: true
         options:
@@ -37,7 +37,7 @@ jobs:
 
       - name: Write out the kubeconfig info
         run: |
-          echo ${{ secrets.DEPLOY_ACCOUNT }} | base64 -d > /tmp/config
+          echo "${{ secrets.DEPLOY_ACCOUNT }}" | base64 -d > /tmp/config
 
       - name: Update deployment
         env:
