@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}
-          image: {{ .Values.dvalin.version }}
+          image: {{ .Values.dvalin.image }}
           imagePullPolicy: Always
           envFrom:
           - secretRef:
