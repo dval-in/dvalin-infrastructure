@@ -1,3 +1,4 @@
 dvalin:
   image: ghcr.io/dval-in/dvalin-backend:main
   restartOnDeployment: true
+  url: staging-backend.dval.in
