@@ -46,6 +46,7 @@ jobs:
           helm upgrade \
           --install \
           --namespace ${{ vars.K8S_NAMESPACE }} \
+          -f environments/values.${{ github.event.inputs.environment_name }}.yaml \
           dvalin-${{ github.event.inputs.helm_chart }} \
           ./${{ github.event.inputs.helm_chart }}
 

@@ -13,10 +13,14 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ .Release.Name }}
+      {{ if .Values.dvalin.restartOnDeployment }}
+      annotations:
+        restartOnDeployment: {{ randAlphaNum 5 | quote }}
+      {{ end }}
     spec:
       containers:
         - name: {{ .Release.Name }}
-          image: ghcr.io/dval-in/dvalin-backend:0.0.2-alpha-fix
+          image: {{ .Values.dvalin.version }}
           imagePullPolicy: Always
           envFrom:
           - secretRef:
