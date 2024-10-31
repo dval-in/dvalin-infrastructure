@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - backend.dval.in
-      secretName: backend.dval.in-tls
+        - {{ .Values.dvalin.url }}
+      secretName: {{ .Values.dvalin.url }}-tls
   rules:
-    - host: backend.dval.in
+    - host: {{ .Values.dvalin.url }}
       http:
         paths:
           - path: /
