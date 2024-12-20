@@ -1,4 +1,4 @@
 dvalin:
-  image: ghcr.io/dval-in/dvalin-backend:0.0.2-alpha-fix
+  image: ghcr.io/dval-in/dvalin-backend:0.0.3-alpha-fix
   restartOnDeployment: false
   url: backend.dval.in
